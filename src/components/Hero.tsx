@@ -25,7 +25,7 @@ export function Hero() {
         </p>
 
         <Button className="mt-10" onClick={handleScroll}>
-          Car
+          Explore Cars
         </Button>
       </div>
 

@@ -4,9 +4,7 @@ import React from 'react'
 
 import { SearchManufacturer } from './SearchManufacturer'
 
-type SearchBarProps = React.ComponentPropsWithRef<'input'>
-
-export function SearchBar({ ...rest }: SearchBarProps) {
+export function SearchBar() {
   const [manufacturer, setManufacturer] = React.useState('')
 
   return (
@@ -19,7 +17,7 @@ export function SearchBar({ ...rest }: SearchBarProps) {
         relative"
       >
         <SearchManufacturer
-          manuFacturer={manufacturer}
+          manufacturer={manufacturer}
           setManuFacturer={setManufacturer}
         />
       </div>
