@@ -17,7 +17,7 @@ export function SearchManufacturer(props: SearchManufacturerProps) {
 
   const [query, setQuery] = React.useState('')
 
-  const filteredManufactures =
+  const filteredManufacturers =
     query === ''
       ? manufacturers
       : manufacturers.filter((item) => {
@@ -31,6 +31,7 @@ export function SearchManufacturer(props: SearchManufacturerProps) {
     <div className="flex-1 max-sm:w-full flex justify-start items-center">
       <Combobox value={manufacturer} onChange={setManuFacturer}>
         <div className="relative w-full">
+          {/* Button for the combobox. Click on the icon to see the complete dropdown */}
           <Combobox.Button className="absolute top-[14px]">
             <Image
               src="/car-logo.svg"
@@ -41,24 +42,31 @@ export function SearchManufacturer(props: SearchManufacturerProps) {
             />
           </Combobox.Button>
 
+          {/* Input field for searching */}
           <Combobox.Input
-            onChange={(e) => setQuery(e.target.value)}
-            displayValue={(manufacturer: string) => manufacturer}
+            displayValue={(item: string) => item}
+            onChange={(event) => setQuery(event.target.value)} // Update the search query when the input changes
             placeholder="Volkswagen"
             className="w-full h-[48px] pl-12 p-4 rounded-l-full
             max-sm:rounded-full bg-light-white outline-none cursor-pointer
             text-sm"
           />
 
+          {/* Transition for displaying the options */}
           <Transition
-            as={React.Fragment}
+            as={React.Fragment} // group multiple elements without introducing an additional DOM node i.e., <></>
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            afterLeave={() => setQuery('')}
+            afterLeave={() => setQuery('')} // Reset the search query after the transition completes
           >
-            <Combobox.Options>
-              {filteredManufactures.map((item) => (
+            <Combobox.Options
+              // className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md
+              // bg-white py-1 text-base shadow-lg ring-1 ring-black
+              // ring-opacity-5 focus:outline-none sm:text-sm"
+              static
+            >
+              {filteredManufacturers.map((item) => (
                 <Combobox.Option
                   key={item}
                   value={item}
@@ -80,6 +88,7 @@ export function SearchManufacturer(props: SearchManufacturerProps) {
                         {item}
                       </span>
 
+                      {/* Show an active blue background color if the option is selected */}
                       {selected ? (
                         <span
                           className={clsx(

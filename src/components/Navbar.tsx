@@ -21,7 +21,7 @@ export function Navbar() {
         </Link>
 
         <Button
-          className="text-primary-blue bg-white min-w-[130px]
+          className="!text-primary-blue bg-white min-w-[130px]
           rounded-full"
         >
           Sign In
