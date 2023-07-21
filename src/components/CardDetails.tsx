@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
 
 import { CarProps } from '@/types'
+import { generateCarImageUrl } from '@/lib/utils'
 
 interface CardDetailsProps {
   car: CarProps
@@ -69,7 +70,7 @@ export function CardDetails({ car, isOpen, closeModal }: CardDetailsProps) {
                       bg-center rounded-lg"
                     >
                       <Image
-                        src="/hero.png"
+                        src={generateCarImageUrl(car) ?? '/hero.png'}
                         alt="Car model"
                         fill
                         priority
@@ -83,7 +84,20 @@ export function CardDetails({ car, isOpen, closeModal }: CardDetailsProps) {
                         bg-primary-blue-100 rounded-lg"
                       >
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageUrl(car, '29') ?? '/hero.png'}
+                          alt="Car model"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
+
+                      <div
+                        className="flex-1 relative w-full h-24
+                        bg-primary-blue-100 rounded-lg"
+                      >
+                        <Image
+                          src={generateCarImageUrl(car, '33') ?? '/hero.png'}
                           alt="Car model"
                           fill
                           priority
@@ -96,20 +110,7 @@ export function CardDetails({ car, isOpen, closeModal }: CardDetailsProps) {
                         bg-primary-blue-100 rounded-lg"
                       >
                         <Image
-                          src="/hero.png"
-                          alt="Car model"
-                          fill
-                          priority
-                          className="object-contain"
-                        />
-                      </div>
-
-                      <div
-                        className="flex-1 relative w-full h-24
-                        bg-primary-blue-100 rounded-lg"
-                      >
-                        <Image
-                          src="/hero.png"
+                          src={generateCarImageUrl(car, '13') ?? '/hero.png'}
                           alt="Car model"
                           fill
                           priority
